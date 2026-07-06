@@ -38,10 +38,14 @@ body {
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
-    overflow-y: auto;
     width: 100%;
     position: relative;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-padding-top: 80px;
 }
 
 /* Background Blobs */
@@ -212,7 +216,7 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -341,7 +345,7 @@ body {
 /* Base Sections */
 .section {
     padding: 6rem 10%;
-    min-height: 50vh;
+    min-height: auto;
 }
 
 .section-title {
