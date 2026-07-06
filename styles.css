@@ -163,6 +163,50 @@ body {
     color: var(--text-primary);
 }
 
+/* Hamburger toggle */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: transform 0.3s ease;
+}
+
+.hamburger::before { top: -7px; }
+.hamburger::after { top: 7px; }
+
+.nav-toggle[aria-expanded="true"] .hamburger {
+    background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::before {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::after {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -265,8 +309,29 @@ body {
         font-size: 3.5rem;
     }
 
+    .nav-toggle {
+        display: block;
+    }
+
     .nav-links {
-        display: none; /* Mobile menu will be added later */
+        display: none;
+        position: fixed;
+        top: 72px;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        background: rgba(15, 17, 21, 0.95);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: 0 0 16px 16px;
+        padding: 1rem 5%;
+        gap: 1rem;
+        box-shadow: var(--glass-shadow);
+    }
+
+    .nav-links.active {
+        display: flex;
     }
 }
 
@@ -440,6 +505,18 @@ body {
     }
 }
 
+/* Focus visible */
+:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Scroll anchor offset */
+html {
+    scroll-padding-top: 80px;
+}
+
 /* Scroll Animations */
 .hidden-section {
     opacity: 0;
@@ -450,4 +527,29 @@ body {
 .hidden-section.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+        scroll-padding-top: 80px;
+    }
+
+    .hero-image {
+        animation: none;
+    }
+
+    .hidden-section {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }

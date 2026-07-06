@@ -1,3 +1,21 @@
+// Mobile nav toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('#nav-links');
+
+navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', !expanded);
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile nav on link click
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('active');
+    });
+});
+
 // Blob follow mouse animation
 const blob1 = document.querySelector('.blob-1');
 const blob2 = document.querySelector('.blob-2');

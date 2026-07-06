@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Syahril Eka Pratama | Portfolio</title>
     <meta name="description" content="Personal portfolio of Muhammad Syahril Eka Pratama, Telecommunications and Digital Technology Enthusiast.">
+    <meta property="og:title" content="Syahril — Portfolio">
+    <meta property="og:description" content="Telecommunications & Digital Technology student at Polinema. Hackintosh builder, IoT tinkerer.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/profile.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Syahril — Portfolio">
+    <meta name="twitter:description" content="Telecommunications & Digital Technology student at Polinema. Hackintosh builder, IoT tinkerer.">
+    <meta name="twitter:image" content="assets/images/profile.jpg">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +25,10 @@
 
     <nav class="navbar glass">
         <div class="logo">syahril<span>.</span></div>
-        <ul class="nav-links">
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+            <span class="hamburger"></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#awards">Awards</a></li>
