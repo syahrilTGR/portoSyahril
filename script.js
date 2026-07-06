@@ -38,16 +38,23 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // Add scroll event listener for navbar blur effect enhancement
+let navTicking = false;
 window.addEventListener('scroll', () => {
-    const nav = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        nav.style.boxShadow = 'var(--glass-shadow)';
-        nav.style.borderBottom = '1px solid var(--glass-border)';
-    } else {
-        nav.style.boxShadow = 'none';
-        nav.style.borderBottom = 'none';
+    if (!navTicking) {
+        navTicking = true;
+        requestAnimationFrame(() => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = 'var(--glass-shadow)';
+                nav.style.borderBottom = '1px solid var(--glass-border)';
+            } else {
+                nav.style.boxShadow = 'none';
+                nav.style.borderBottom = 'none';
+            }
+            navTicking = false;
+        });
     }
-});
+}, { passive: true });
 
 // Scroll Reveal Animation using Intersection Observer
 const observerOptions = {
